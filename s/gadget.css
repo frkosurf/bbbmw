@@ -1,0 +1,50 @@
+body {
+    font-family: arial;
+    font-size: 75%;
+    background-color: #a3afb4;
+}
+div.notification {
+    background-color: #888888;
+    border: 1px solid #CCCCCC;
+    color: lightgreen;
+    padding: 5px;
+}
+a {
+    color: #0b333c;
+    text-decoration: none;
+}
+a:hover {
+    color: #071322;
+    text-decoration: none;
+}
+legend {
+    border: 1px solid;
+    padding: 2px;
+    background-color: f7f7f7;
+    border-radius: 3px;
+}
+fieldset {
+    border: 1px solid ;
+    border-radius: 3px;
+    background-color: #f7f7f7;
+}
+h2 {
+    margin-top: 0;
+    padding-top: 0;
+    font-size: 120%;
+}
+#gadget {
+    background-color: #cccccc;
+    border: 1px solid #6c7e88;
+    border-radius: 5px;
+    padding: 7px;
+    box-shadow: 0 4px 3px 0;
+    -webkit-box-shadow: 0 4px 3px 0;
+}
+ul {
+    list-style-type: none;
+    border: 1px solid;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: #f7f7f7;
+}

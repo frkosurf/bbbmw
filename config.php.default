@@ -1,0 +1,52 @@
+<?php
+$config = array ();
+
+$config['time_zone'] = 'Europe/Amsterdam';
+
+// Whether or not to allow only SSL connections
+$config['ssl_only'] = FALSE;
+
+// Use HTTP Strict Transport Security
+$config['ssl_hsts'] = TRUE;
+
+// NullAuth, SimpleAuth, SSPAuth
+$config['auth_type'] = 'SimpleAuth';
+
+// NullGroups, SimpleGroups, ConextGroups, ConextGroupsOAuth2
+$config['group_type'] = 'SimpleGroups';
+
+// BigBlueButton API configuration
+// See http://code.google.com/p/bigbluebutton/wiki/FAQ#How_do_I_change_the_security_salt?
+$config['bbb_api_url'] = 'http://<host>/bigbluebutton/api';
+$config['bbb_salt'] = 'salt';
+
+// User configuration (SimpleAuth)
+$config['simple_auth_users'] = array ('demo' => array ('password' => 'user', 'display_name' => 'Demo User'),
+                                      'omed' => array ('password' => 'resu', 'display_name' => 'Omed Resu'));
+
+// Group configuration (SimpleGroups)
+$config['simple_groups'] = array ('sharedgroup' => array ('display_name' => 'Shared', 'members' => array('demo','omed')),
+                                  'demoprivate' => array ('display_name' => 'Demo Private', 'members' => array('demo')),
+                                  'omedprivate' => array ('display_name' => 'Omed Private', 'members' => array('omed')));
+
+// simpleSAMLphp configuration (SSPAuth)
+$config['ssp_path'] = '/var/simplesamlphp';
+$config['ssp_sp'] = 'default-sp';
+$config['ssp_uid_attr'] = 'uid';
+$config['ssp_dn_attr'] = 'cn';
+
+// Use SURFconext for accessing group membership with this OAuth information
+$config['conext_authorize_uri'] = 'https://api.surfconext.nl/v1/oauth2/authorize';
+$config['conext_token_uri']     = 'https://api.surfconext.nl/v1/oauth2/token';
+$config['conext_group_api_uri'] = 'https://api.surfconext.nl/v1/social/rest/groups';
+$config['conext_key']           = '12345';
+$config['conext_secret']        = '54321';
+$config['conext_redirect_uri']  = 'http://localhost/bbbmw/index.php';
+
+//Only allow users from this organisation to create conferences in the webinterface. Use full urn
+//set to 1 to restrict
+$config['restrict_create'] = '0';
+//the urn that can create conferences
+$config['restrict_create_to'] = 'urn:collab:person:avans.nl';
+
+?>

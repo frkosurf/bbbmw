@@ -1,0 +1,4 @@
+- get rid of Smarty
+- cleanup OAuth2 module
+- use DB backend for storing conferences
+- better error handling with group retrieval

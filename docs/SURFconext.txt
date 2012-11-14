@@ -1,0 +1,43 @@
+-- SURFconext --
+
+This document explains how to configure FileTrader for use with SURFconext.
+
+First set the values below in the configuration file (config.php), see below 
+an example:
+
+<quote>
+	$config['auth_type']     = 'SSPAuth';
+	$config['ssp_path']      = '/var/www/ssp/sp';
+	$config['ssp_sp']        = 'filetrader';
+	$config['ssp_uid_attr']  = 'nameid';
+	$config['ssp_dn_attr']   = 'urn:mace:dir:attribute-def:displayName';
+
+	$config['group_type']    = 'ConextGroups';
+	$config['conext_host']   = 'os.surfconext.nl';
+	$config['conext_key']    = '12345';
+	$config['conext_secret'] = '54321';
+</quote>
+
+Set the conext_host, conext_key and conext_secret to the OAuth information you 
+obtained, make sure the ssp_sp value matches with the value in the 
+simpleSAMLphp config as shown below. Also set the path to the path where you 
+installed simpleSAMLphp.
+
+This is part of the configuration of simpleSAMLphp in SP "mode" 
+(config/authsources.php). You still need to establish the IDP/SP configuration,
+which is out of scope in this document:
+
+<quote>
+        'filetrader' => array(
+                'saml:SP',
+                'idp' => 'https://engine.surfconext.nl/authentication/idp/metadata',
+                'authproc' => array(
+                        20 => array(
+                                'class' => 'saml:NameIDAttribute',
+                                'format' => '%V',
+                        ),
+                ),
+        ),
+
+</quote>
+
