@@ -1,13 +1,25 @@
-# BigBlueButton Middleware
-The following components are required:
+# Introduction
+This project aims to create middleware for BigBlueButton to allow for user and 
+group management for scheduling conferences. It can use federated identities 
+(simpleSAMLphp) and use OpenSocial (osapi) to retrieve group information.
 
-* PHP 5.3.x
-* Smarty (PHP template engine)
-* simpleSAMLphp (if you want to use SSPAuth for authenticating)
+BBBmw is the middleware that links user/group authentication (federated groups 
+and identities) to BigBlueButton. It interacts with (an unmodified) 
+BigBlueButton using the API provided by the BigBlueButton service.
 
-For simpleSAMLphp a system wide installation is recommended. See 
-`docs/SURFconext.txt` for more information on configuring simpleSAMLphp for use 
-with SURFconext, other identity federations will differ somewhat in 
+BBBmw is needed (right now) because BigBlueButton does not have any notion of 
+users/groups only conferences, moderators and attendees.
+
+Ideally the BigBlueButton project would support something like OAuth in the 
+future so for instance OpenSocial containers can directly interact with it
+rendering this project redundant.
+
+BBBmw uses the API for BigBlueButton 0.7x. However, as long as the API does not 
+change it should keep working without changing bbbmw.
+
+For simpleSAMLphp a system wide installation of simpleSAMLphp is recommended. 
+See `docs/SURFconext.txt` for more information on configuring simpleSAMLphp 
+for use with SURFconext, other identity federations will differ somewhat in 
 configuration.
 
 # Installation
