@@ -1,11 +1,14 @@
 # BigBlueButton Configuration
 First set the correct values in the configuration file `config.php`:
 
-	$config['auth_type']            = 'SSPAuth';
-	$config['ssp_path']             = '/var/simplesamlphp';
-	$config['ssp_sp']               = 'BigBlueButton';
-	$config['ssp_dn_attr']          = 'displayName';
-    $config['ssp_org_attr']         = 'schacHomeOrganization';
+    $config['auth_type']            = 'SSPAuth';
+    $config['ssp_path']             = '/var/simplesamlphp';
+    $config['ssp_sp']               = 'BigBlueButton';
+    $config['ssp_dn_attr']          = 'displayName';
+
+    // bug in SURFconext currently requires full URN syntax of attribute
+    // $config['ssp_org_attr']         = 'schacHomeOrganization';
+    $config['ssp_org_attr']         = 'urn:mace:terena.org:attribute-def:schacHomeOrganization';
 
     $config['group_type']           = 'ConextGroupsOAuth2';
     $config['conext_authorize_uri'] = 'https://api.surfconext.nl/v1/oauth2/authorize';
