@@ -47,6 +47,13 @@ abstract class Auth {
 			throw new Exception("not logged in");
 	}
 
+	function getUserOrganization() {
+		if ($this->isLoggedIn())
+			return $_SESSION['userSchacHomeOrganization'];
+		else
+			throw new Exception("not logged in");
+	}
+
 	/**
 	 * Function must set session variables userId, userAttr, userDisplayName
 	 */

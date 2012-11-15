@@ -26,6 +26,7 @@ class NullAuth extends Auth {
 		$_SESSION['userId'] = 'anonymous';
 		$_SESSION['userAttr'] = array ();
 		$_SESSION['userDisplayName'] = 'Anonymous Coward';
+        $_SESSION['userSchacHomeOrganization'] = "example.org";
 		return;
 	}
 }

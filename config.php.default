@@ -31,9 +31,9 @@ $config['simple_groups'] = array ('sharedgroup' => array ('display_name' => 'Sha
 
 // simpleSAMLphp configuration (SSPAuth)
 $config['ssp_path'] = '/var/simplesamlphp';
-$config['ssp_sp'] = 'default-sp';
-$config['ssp_uid_attr'] = 'uid';
-$config['ssp_dn_attr'] = 'cn';
+$config['ssp_sp'] = 'BigBlueButton';
+$config['ssp_dn_attr'] = 'displayName';
+$config['ssp_org_attr'] = 'schacHomeOrganization';
 
 // Use SURFconext for accessing group membership with this OAuth information
 $config['conext_authorize_uri'] = 'https://api.surfconext.nl/v1/oauth2/authorize';
@@ -43,10 +43,7 @@ $config['conext_key']           = '12345';
 $config['conext_secret']        = '54321';
 $config['conext_redirect_uri']  = 'http://localhost/bbbmw/index.php';
 
-//Only allow users from this organisation to create conferences in the webinterface. Use full urn
-//set to 1 to restrict
-$config['restrict_create'] = '0';
-//the urn that can create conferences
-$config['restrict_create_to'] = 'urn:collab:person:avans.nl';
-
+// Only allow users from this organisation to create conferences
+//$config['restrict_create_org'] = array("avans.nl", "surfnet.nl");
+$config['restrict_create_org'] = array();
 ?>

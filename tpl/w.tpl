@@ -61,7 +61,7 @@
 		{/foreach}
 		</tbody>
 	</table>
-{if $restrict_create == 0}
+{if !$restricted}
 	<h3>Create New Conference</h3>
 
 	<form class="form-horizontal" method="POST">

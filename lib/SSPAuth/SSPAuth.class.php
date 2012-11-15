@@ -32,12 +32,17 @@ class SSPAuth extends Auth {
 		if ($this->isLoggedIn())
 			return;
 
-		$this->ssp->requireAuth();
+        $this->ssp->requireAuth(array("saml:NameIDPolicy" => "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"));
+        $nameId = $this->ssp->getAuthData("saml:sp:NameID");
+        if ("urn:oasis:names:tc:SAML:2.0:nameid-format:persistent" !== $nameId['Format']) {
+            throw new Exception("NameID format MUST be 'urn:oasis:names:tc:SAML:2.0:nameid-format:persistent', we got '" . $nameId['Format'] . "' instead.");
+        }
 		$attr = $this->ssp->getAttributes();
 		
-		$_SESSION['userId'] = $attr[getConfig($this->config, 'ssp_uid_attr', TRUE)][0];
-		$_SESSION['userAttr'] = $attr;
+		$_SESSION['userId'] = $nameId['Value'];
+        $_SESSION['userAttr'] = $attr;
 		$_SESSION['userDisplayName'] = $attr[getConfig($this->config, 'ssp_dn_attr', TRUE)][0];
+        $_SESSION['userSchacHomeOrganization'] = $attr[getConfig($this->config, 'ssp_org_attr', TRUE)][0];
 	}
 
 	function logout($url = NULL) {

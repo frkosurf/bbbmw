@@ -2,7 +2,7 @@
 
 /*
  *  BBBmw - BigBlueButton Middleware
- *  Copyright (C) 2011 François Kooman <fkooman@tuxed.net>
+ *  Copyright (C) 2012 FranÁois Kooman <fkooman@tuxed.net>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
@@ -195,22 +195,19 @@ try {
 		}
 	}
 
-	/* Restrict creating conferences to one organisation; if configured */
-	/* Default: not restricted */
-	$restrict_create=0;
-	/* get the config, and compare to current user URN */
-	if (getConfig($config, 'restrict_create', FALSE, 0)==1) {
-	        $restrict_create=1;
-	        $restrict_create_to=getConfig($config, 'restrict_create_to', FALSE, FALSE);
-	        if (strpos($auth->getUserId(),$restrict_create_to) !== false) {
-	                $restrict_create=0;
-                } else {
-                        $restrict_create=1;
-                }
+    $restricted = FALSE;
+    $restrictToOrganizations = getConfig($config, 'restrict_create_org', FALSE, array());
+    if(is_array($restrictToOrganizations) && !empty($restrictToOrganizations)) {
+        // non empty array, so possibly restricted!
+        $schacHomeOrganization = $auth->getUserOrganization();
+        if(!in_array($schacHomeOrganization, $restrictToOrganizations)) {
+            $restricted = TRUE;
         }
-        $smarty->assign('restrict_create',$restrict_create);
-        
-        /* Web and Gadget template */
+    }
+
+    $smarty->assign('restricted', $restricted);
+
+    /* Web and Gadget template */
 	$smarty->assign('userId', $auth->getUserId());
 	$smarty->assign('userDisplayName', $auth->getUserDisplayName());
 	$smarty->assign('conferences', $conferences);

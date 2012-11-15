@@ -37,6 +37,7 @@ class SimpleAuth extends Auth {
                                 $_SESSION['userId'] = $userId;
                                 $_SESSION['userAttr'] = array();
                                 $_SESSION['userDisplayName'] = $this->userConfig[$userId]['display_name'];
+                                $_SESSION['userSchacHomeOrganization'] = "example.org";
                                 return;
 			}
 		}
