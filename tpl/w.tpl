@@ -94,17 +94,25 @@ Create New Team</a></label>
 	</ul>
 </div>
 
-{foreach $userGroups as $k => $v}
-	<label class="checkbox">
-		<input name="groups[]" type="checkbox" value="{$k}">{$v}
-	</label>
-{/foreach}
+{if empty($userGroups)}
+    <small class="text-info">You are not a member of any group. Please join a group first...</small>
+{else}
+    {foreach $userGroups as $k => $v}
+	    <label class="checkbox">
+		    <input name="groups[]" type="checkbox" value="{$k}">{$v}
+	    </label>
+    {/foreach}
+{/if}
 </div>
 </div>
 
 <div class="control-group">
 	<div class="controls">
-		<input type="submit" class="btn btn-primary" value="Create Conference">
+        {if empty($userGroups)}
+        		<input type="submit" disabled="disabled" class="btn btn-primary disabled" value="Create Conference">
+        {else}
+        		<input type="submit" class="btn btn-primary" value="Create Conference">
+        {/if}
 	</div>
 </div>
 
