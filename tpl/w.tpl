@@ -5,7 +5,7 @@
 <title>Web Conferencing</title>
 <link href="ext/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="ext/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 </head>
 <body>
 
