@@ -1,21 +1,14 @@
 # Introduction
-This project aims to create middleware for BigBlueButton to allow for user and 
-group management for scheduling conferences. It can use federated identities 
-(simpleSAMLphp) and use OpenSocial (osapi) to retrieve group information.
+This project aims to create a connector for BigBlueButton to allow scheduling
+conferences for groups you are a member of. It uses federated authentication 
+(e.g. with SAML) using simpleSAMLphp and retrieves group membership 
+information using the VOOT protocol.
 
-BBBmw is the middleware that links user/group authentication (federated groups 
-and identities) to BigBlueButton. It interacts with (an unmodified) 
-BigBlueButton using the API provided by the BigBlueButton service.
+This connector interacts with an unmodified BigBlueButton using the API 
+provided by the BigBlueButton service.
 
-BBBmw is needed (right now) because BigBlueButton does not have any notion of 
-users/groups only conferences, moderators and attendees.
-
-Ideally the BigBlueButton project would support something like OAuth in the 
-future so for instance OpenSocial containers can directly interact with it
-rendering this project redundant.
-
-BBBmw uses the API for BigBlueButton 0.7x. However, as long as the API does not 
-change it should keep working without changing bbbmw.
+The connector is needed because BigBlueButton does not have any notion of 
+users and groups, only conferences, moderators and attendees.
 
 For simpleSAMLphp a system wide installation of simpleSAMLphp is recommended. 
 See `docs/SURFconext.txt` for more information on configuring simpleSAMLphp 
@@ -28,8 +21,8 @@ configuration.
     $ sh docs/configure.sh
     $ sh docs/install_dependencies.sh
 
-If you want to use `ConextGroupsOAuth2` run the following to initialize the
-database:
+If you want to use `ConextGroupsOAuth2` run the following command to 
+initialize the database:
 
     $ php docs/init_oauth_db.php
 
