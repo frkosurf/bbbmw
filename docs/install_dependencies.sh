@@ -6,7 +6,7 @@ mkdir -p ext/
 # php-oauth-client
 (
 cd ext/
-git clone https://github.com/fkooman/php-oauth-client.git
+git clone https://github.com/fkooman/php-oauth-lib-client.git php-oauth-client
 )
 
 # Bootstrap
