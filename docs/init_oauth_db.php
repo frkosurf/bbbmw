@@ -16,5 +16,6 @@ $pdo = new PDO($db);
         $pdo->exec("
             CREATE TABLE IF NOT EXISTS `oauth2_states` (
             `state` VARCHAR(64) NOT NULL,
+            request_uri TEXT NOT NULL,
             PRIMARY KEY (`state`))
         ");
