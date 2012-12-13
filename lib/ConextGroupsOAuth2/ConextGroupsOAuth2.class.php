@@ -22,6 +22,8 @@ class ConextGroupsOAuth2 extends Groups {
             'authorizeEndpoint' => getConfig($config, 'conext_authorize_uri', TRUE),
             'tokenEndpoint' => getConfig($config, 'conext_token_uri', TRUE),
             'redirectUri' => getConfig($config, 'conext_redirect_uri', TRUE),
+           'TokensTableName' => getConfig($config, 'TokensTableName', TRUE),
+            'StatesTableName' => getConfig($config, 'StatesTableName', TRUE),
         );
 
         $this->_consumer = new OAuthTwoPdoCodeClient($oauthConfig);

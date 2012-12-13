@@ -43,6 +43,10 @@ $config['conext_key']           = '12345';
 $config['conext_secret']        = '54321';
 $config['conext_redirect_uri']  = 'http://localhost/bbbmw/index.php';
 
+// OAuth database tables
+$config['TokensTableName'] = 'oauth2_tokens';
+$config['StatesTableName'] = 'oauth2_states';
+
 // Only allow users from this organisation to create conferences
 //$config['restrict_create_org'] = array("avans.nl", "surfnet.nl");
 $config['restrict_create_org'] = array();
