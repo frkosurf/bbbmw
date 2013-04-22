@@ -72,4 +72,12 @@ function getProtocol() {
 	}
 	return (isset ($_SERVER['HTTPS']) && !empty ($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
 }
+
+function getContents($url) {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+    return curl_exec($ch);
+}
 ?>

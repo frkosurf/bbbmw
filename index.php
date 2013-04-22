@@ -116,7 +116,7 @@ try {
 			$vb = mt_rand(70000,79999);
 			$call = "name=$uname&meetingID=$confId&welcome=$uwelcome&logoutURL=$ulogout_url&voiceBridge=$vb";
 			$checksum = sha1("create".$call.$salt);
-			$result = file_get_contents("$api_url/create?$call&checksum=$checksum");
+			$result = getContents("$api_url/create?$call&checksum=$checksum");
 			$xml = new SimpleXMLElement($result);
 			$confdata['attendeePW'] = (string)$xml->attendeePW;
 			$confdata['moderatorPW'] = (string)$xml->moderatorPW;
@@ -133,7 +133,7 @@ try {
 				$pass = $entry['moderatorPW'];
 				$call = "meetingID=$id&password=$pass";
 				$checksum = sha1("end".$call.$salt);
-				$result = file_get_contents("$api_url/end?$call&checksum=$checksum");
+				$result = getContents("$api_url/end?$call&checksum=$checksum");
 				$storage->deleteEntry('conference', $id);
 				$notification = 'conference ended';
 				logHandler($notification);
@@ -182,7 +182,7 @@ try {
 				$pass = $cinfo['moderatorPW'];
 				$call = "meetingID=$cid&password=$pass";
 				$checksum = sha1("getMeetingInfo".$call.$salt);
-				$result = file_get_contents("$api_url/getMeetingInfo?$call&checksum=$checksum");
+				$result = getContents("$api_url/getMeetingInfo?$call&checksum=$checksum");
 				$xml = new SimpleXMLElement($result);
 				$mk = (string)$xml->messageKey;
 				if($mk === "notFound") {
