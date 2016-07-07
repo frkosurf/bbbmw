@@ -36,11 +36,20 @@ class ConextGroupsOAuth2 extends Groups {
         $output = $this->_consumer->makeRequest($this->_apiUri);
         $jd = json_decode($output, TRUE);
         $groups = array();
+        // https://wiki.surfnet.nl/pages/viewpage.action?pageId=51677624
+        // "Migrating from api.surfconext.nl (VOOT1) to voot.surfconext.nl (VOOT2)"
         if(array_key_exists("entry", $jd)) {
+            // assume VOOT 1
             foreach($jd['entry'] as $k => $v) {
                 $groups[$v['id']] = $v['title'];
             }
+        } else {
+            // assume VOOT 2
+            foreach($jd as $v) {
+                $groups[$v['id']] = $v['displayName'];
+            }        
         }
+
         return $groups;
     }
 
